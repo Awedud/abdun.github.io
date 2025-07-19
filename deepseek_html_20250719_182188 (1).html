@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulwedud Naser | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #C8102E; /* Liverpool red */
+            --secondary: #00B2A9; /* Farming green */
+            --accent: #F6EB61; /* Forex gold */
+            --dark: #1A1A2E;
+            --light: #F5F5F7;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9f9f9, #e6e6e6);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-graphics {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.1;
+            position: absolute;
+        }
+
+        .circle:nth-child(2) {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary);
+            opacity: 0.1;
+        }
+
+        .circle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            opacity: 0.1;
+        }
+
+        .interests {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 300px;
+        }
+
+        .interest-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .football .interest-icon {
+            background: var(--primary);
+        }
+
+        .forex .interest-icon {
+            background: var(--accent);
+        }
+
+        .farming .interest-icon {
+            background: var(--secondary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(200, 16, 46, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-text p {
+            margin: 0;
+            color: #777;
+        }
+
+        .about-graphics {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .graphic-container {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .graphic-item {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: white;
+            transition: var(--transition);
+        }
+
+        .graphic-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .graphic-item:nth-child(1) {
+            top: 0;
+            left: 0;
+            background: rgba(200, 16, 46, 0.1);
+        }
+
+        .graphic-item:nth-child(2) {
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 178, 169, 0.1);
+        }
+
+        .graphic-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Goals Section */
+        .goals {
+            background: linear-gradient(to right, rgba(200, 16, 46, 0.05), rgba(0, 178, 169, 0.05));
+        }
+
+        .goals-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .goals-content p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .goal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .goal-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .goal-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .goal-card p {
+            color: #777;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            .hero-graphics {
+                position: relative;
+                right: 0;
+                top: 0;
+                transform: none;
+                margin: 3rem auto;
+                height: auto;
+            }
+            
+            .interests {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">AN<span>.</span></div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>I'm <span>Abdulwedud Naser</span></h1>
+            <h2>Recent 12th Graduate & Muslim</h2>
+            <p>Massive Liverpool FC supporter with an interest in forex trading and a passion for sustainable farming. Currently awaiting my 12th grade results while developing skills for the future.</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn">Learn More</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+        
+        <div class="hero-graphics">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            
+            <div class="interests">
+                <div class="interest-item football">
+                    <div class="interest-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <div>
+                        <h3>Liverpool FC</h3>
+                        <p>Die-hard supporter</p>
+                    </div>
+                </div>
+                
+                <div class="interest-item forex">
+                    <div class="interest-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3>Forex Trading</h3>
+                        <p>Developing skills</p>
+                    </div>
+                </div>
+                
+                <div class="interest-item farming">
+                    <div class="interest-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h3>Farming</h3>
+                        <p>Aspiring farmer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Recent 12th Graduate & Muslim</h3>
+                <p>Assalamu Alaikum! I'm Abdulwedud Naser, a recent 12th grade graduate currently awaiting my results. As a Muslim, I strive to balance my passions with my faith while developing skills for my future.</p>
+                <p>When I'm not following Liverpool FC matches, you'll find me learning about forex markets or researching sustainable farming techniques for my future agricultural ventures.</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Name</h4>
+                            <p>Abdulwedud Naser</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Education</h4>
+                            <p>12th Grade (Awaiting Results)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Passion</h4>
+                            <p>Liverpool FC Supporter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-graphics">
+                <div class="graphic-container">
+                    <div class="graphic-item">
+                        <i class="fas fa-futbol" style="color: #C8102E;"></i>
+                        <h3>Liverpool FC</h3>
+                        <p>You'll Never Walk Alone</p>
+                    </div>
+                    
+                    <div class="graphic-item">
+                        <i class="fas fa-mosque" style="color: #00B2A9;"></i>
+                        <h3>Muslim</h3>
+                        <p>Alhamdulillah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="goals" id="goals">
+        <h2 class="section-title">My Goals & Aspirations</h2>
+        <div class="goals-content">
+            <p>While awaiting my 12th grade results, I'm focused on developing skills for my future. I aim to combine my interests in finance and agriculture to create halal income sources through ethical trading and sustainable farming.</p>
+            
+            <div class="goal-cards">
+                <div class="goal-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Academic Success</h3>
+                    <p>Eagerly awaiting my 12th grade results with optimism</p>
+                </div>
+                
+                <div class="goal-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Forex Trading</h3>
+                    <p>Developing halal trading strategies and skills</p>
+                </div>
+                
+                <div class="goal-card">
+                    <i class="fas fa-tractor"></i>
+                    <h3>Sustainable Farming</h3>
+                    <p>Establish an ethical, productive farm business</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="about-content">
+            <div class="about-graphics">
+                <div class="graphic-container">
+                    <div class="graphic-item" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <i class="fas fa-envelope" style="color: #C8102E;"></i>
+                        <h3>Get In Touch</h3>
+                        <p>I'd love to hear from you</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-text">
+                <h3>Let's Connect</h3>
+                <p>Feel free to reach out if you'd like to discuss football, trading, farming, or potential opportunities.</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>abdulwedud@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <p>0943235091</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>Addis Ababa, around Kara next to Ajanba</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@just_me11155" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://twitter.com/abdlwedud11" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/a_wedud1" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/a_wedud11/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="copyright">© 2023 Abdulwedud Naser. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#nav-menu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
